@@ -1,4 +1,4 @@
-# RPG Character Builder and Battle Simulator
+# Mini RPG
 
 ---
 A pre-planning document to establish a baseline vision of the
