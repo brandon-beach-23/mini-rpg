@@ -63,7 +63,7 @@ Why: Used to ensure deterministic values for battles.
 
 
 ## Package Structure
-src/main/java/com/brandonbeach/rpg/
+src/main/java/com/brandonbeach/mini_rpg/
 ├── character/
 │ ├── domain/
 │ │ ├── Character.java (aggregate root)
