@@ -97,6 +97,27 @@ src/main/java/com/brandonbeach/mini_rpg/
 │ └── EnemyController.java
 
 
+## Stat System Design
+
+### STRENGTH
+- Increases: Damage, Vitality
+- Warrior: +3 damage, +2 vitality per point
+- Rogue: +2 damage, +1 vitality per point
+- Mage: +1 damage, +2 vitality per point
+
+### DEXTERITY
+- Increases: Critical Strike Chance, Speed
+- Warrior: +0.5% crit chance, +1 speed per point
+- Rogue: +2% crit chance, 3 speed per point
+- Mage: +1% crit chance, 1 speed per point
+
+### INTELLIGENCE
+- Increases: Ability Damage, Critical Damage
+- Warrior: +2 Ability Damage, +2 Critical Damage
+- Rogue: +1 Ability Damage, +3 Critical Damage
+- Mage: +3 Ability Damage, +2 Critical Damage
+
+
 ## Database Schema
 
 ### Character Table
