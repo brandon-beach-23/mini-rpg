@@ -16,6 +16,7 @@ public class Character extends BaseEntity {
     private Stats stats;
     private Attributes attributes;
     private int hitPoints;
+    private Status status = Status.HEALTHY;
 
     public Character(String characterName, CharacterClass characterClass, Attributes attributes) {
         validateCharacterName(characterName);
@@ -37,6 +38,37 @@ public class Character extends BaseEntity {
             throw new IllegalArgumentException("Character name must contain only letters (A–Z, a–z)");
         }
     }
+
+    public void takeDamage(int damage) {
+        this.hitPoints -= damage;
+        if (this.hitPoints <= 0) {
+            this.hitPoints = 0;
+            this.status = Status.DEAD;
+        }
+    }
+
+        public void applyStatusEffect(Status effect) {
+            if (this.status == Status.DEAD) {
+                throw new IllegalArgumentException("Cannot apply status effects to a dead character");
+            }
+            if (effect == Status.DEAD) {
+                throw new IllegalArgumentException("Use takeDamage() to kill a character, not applyStatusEffect()");
+            }
+            this.status = effect;
+        }
+
+        public void cureCondition() {
+            if (this.status == Status.DEAD) {
+                throw new IllegalArgumentException("Cannot cure a dead character");
+            }
+            this.status = Status.HEALTHY;
+        }
+
+        public boolean isAlive() {
+            return this.hitPoints > 0 && this.status != Status.DEAD;
+        }
+
+
 
 
 }

@@ -48,4 +48,88 @@ public class CharacterTest {
             new Character(characterName, characterClass, attributes);
         });
     }
+
+    @Test
+    public void testTakeDamage_ReduceHitPoints(){
+        //Arrange
+        Character character = new Character("Aethan", CharacterClass.WARRIOR, new Attributes(5,3,2));
+        int initialHitPoints = character.getHitPoints();
+        int damageAmount = 5;
+        //Act
+        character.takeDamage(damageAmount);
+        //Assert
+        assertEquals(initialHitPoints - damageAmount, character.getHitPoints());
+        assertEquals(Status.HEALTHY, character.getStatus());
+        assertTrue(character.isAlive());
+    }
+
+    @Test
+    public void testTakeDamage_SetStatusToDeadWhenHitPointsReachZero(){
+        //Arrange
+        Character character = new Character("Aethan", CharacterClass.WARRIOR, new Attributes(5,3,2));
+        int currentHitPoints = 5;
+        character.setHitPoints(currentHitPoints);
+        int damageAmount = 5;
+        //Act
+        character.takeDamage(damageAmount);
+        //Assert
+        assertEquals(0, character.getHitPoints());
+        assertEquals(Status.DEAD, character.getStatus());
+        assertFalse(character.isAlive());
+    }
+
+    @Test
+    public void testApplyStatusEffect_ChangesCharacterStatus(){
+        //Arrange
+        Character character = new Character("Aethan", CharacterClass.WARRIOR, new Attributes(5,3,2));
+        //Act
+        character.applyStatusEffect(Status.BURNING);
+        //Assert
+        assertEquals(Status.BURNING, character.getStatus());
+    }
+
+    @Test
+    public void testApplyStatusEffect_ThrowsExceptionWhenCharacterIsDead() {
+        // Arrange
+        Character character = new Character("Aethan", CharacterClass.WARRIOR, new Attributes(5, 3, 2));
+        character.takeDamage(character.getHitPoints());
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            character.applyStatusEffect(Status.POISONED);
+        });
+    }
+
+    @Test
+    public void testCureCondition_ResetsStatusToHealthy() {
+        //Arrange
+        Character character = new Character("Aethan", CharacterClass.WARRIOR, new Attributes(5,3,2));
+        character.setStatus(Status.BURNING);
+        //Act
+        character.cureCondition();
+        //Assert
+        assertEquals(Status.HEALTHY, character.getStatus());
+    }
+
+    @Test
+    public void testCureCondition_DoesNothingWhenCharacterIsDead() {
+        // Arrange
+        Character character = new Character("Aethan", CharacterClass.WARRIOR, new Attributes(5, 3, 2));
+        character.setStatus(Status.BURNING);
+        character.takeDamage(character.getHitPoints());
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            character.cureCondition();
+        });
+    }
+
+    @Test
+    public void testIsAlive_ReturnsTrueWhenHealthy(){
+        //Arrange
+        Character character = new Character("Aethan", CharacterClass.WARRIOR, new Attributes(5,3,2));
+        //Act & Assert
+        assertTrue(character.isAlive());
+    }
+
 }
