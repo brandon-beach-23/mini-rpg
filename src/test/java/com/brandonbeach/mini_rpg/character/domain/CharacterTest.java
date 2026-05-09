@@ -1,5 +1,7 @@
 package com.brandonbeach.mini_rpg.character.domain;
 
+import com.brandonbeach.mini_rpg.shared.domain.Attributes;
+import com.brandonbeach.mini_rpg.shared.domain.Status;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -131,5 +133,4 @@ public class CharacterTest {
         //Act & Assert
         assertTrue(character.isAlive());
     }
-
 }

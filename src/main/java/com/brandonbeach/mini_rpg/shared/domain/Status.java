@@ -1,4 +1,4 @@
-package com.brandonbeach.mini_rpg.character.domain;
+package com.brandonbeach.mini_rpg.shared.domain;
 
 public enum Status {
     HEALTHY,

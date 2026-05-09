@@ -1,6 +1,8 @@
 package com.brandonbeach.mini_rpg.character.domain;
 
 
+import com.brandonbeach.mini_rpg.shared.domain.Attributes;
+import com.brandonbeach.mini_rpg.shared.domain.Stats;
 import lombok.Getter;
 
 @Getter

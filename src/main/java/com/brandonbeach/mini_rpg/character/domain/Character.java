@@ -1,10 +1,12 @@
 package com.brandonbeach.mini_rpg.character.domain;
 
+import com.brandonbeach.mini_rpg.shared.domain.Attributes;
 import com.brandonbeach.mini_rpg.shared.domain.BaseEntity;
+import com.brandonbeach.mini_rpg.shared.domain.Stats;
+import com.brandonbeach.mini_rpg.shared.domain.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.validation.annotation.Validated;
 
 @Getter
 @Setter
