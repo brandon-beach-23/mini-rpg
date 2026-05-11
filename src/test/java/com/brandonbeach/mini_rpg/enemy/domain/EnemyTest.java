@@ -1,6 +1,5 @@
 package com.brandonbeach.mini_rpg.enemy.domain;
 
-import com.brandonbeach.mini_rpg.character.domain.CharacterClass;
 import com.brandonbeach.mini_rpg.shared.domain.Status;
 import org.junit.jupiter.api.Test;
 
@@ -90,6 +89,18 @@ public class EnemyTest {
         enemy.cureCondition();
         //Assert
         assertEquals(Status.HEALTHY, enemy.getStatus());
+    }
+
+    @Test
+    public void testCureCondition_ThrowsExceptionWhenEnemyIsDead() {
+        // Arrange
+        Enemy enemy = new Enemy("Voldemort", EnemyType.TROLL);
+        enemy.takeDamage(enemy.getHitPoints());
+
+        // Act & Assert
+        assertThrows(IllegalArgumentException.class, () -> {
+            enemy.cureCondition();
+        });
     }
 
     @Test

@@ -1,13 +1,16 @@
 package com.brandonbeach.mini_rpg.enemy.domain;
 
+import com.brandonbeach.mini_rpg.shared.domain.BaseEntity;
 import com.brandonbeach.mini_rpg.shared.domain.Stats;
 import com.brandonbeach.mini_rpg.shared.domain.Status;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Enemy {
+@NoArgsConstructor
+public class Enemy extends BaseEntity {
     private String enemyName;
     private EnemyType enemyType;
     private Stats stats;
