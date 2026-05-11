@@ -2,7 +2,11 @@ package com.brandonbeach.mini_rpg.enemy.domain;
 
 import com.brandonbeach.mini_rpg.shared.domain.Stats;
 import com.brandonbeach.mini_rpg.shared.domain.Status;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class Enemy {
     private String enemyName;
     private EnemyType enemyType;
